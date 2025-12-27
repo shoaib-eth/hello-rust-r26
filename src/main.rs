@@ -1,12 +1,24 @@
 fn main() {
-    let mut num:u16 = 23;
-    num = 500;
-    println!("The Number is: {}", num);
+    // It is &str type
+    let greeting: &str = "Hello 👋, Rust Developers!";
+    println!("{}", greeting);
+
+    // It is String type
+    let farewell: String = String::from("Goodbye 👋, Rust Developers!");
+    println!("{}", farewell);
+
+    // If we need to push more data, we use String
+    let mut dynamic_string = String::from("Welcome 🙏");
+    println!("{}", dynamic_string);
+
+    dynamic_string.push_str(" to the Rust developers!");
+    println!("{}", dynamic_string);
+
+    // Notes 📝 - 
+    // 1. This is not possible in `&str` because it holds only fixed-size string
+    // 2. before push more string data, we need to make it mutable using `mut` keyword
+
+    // Summary 📚 -
+    // String - Dynamic Length String -> Heap Allocated
+    // &str - Fixed Length String -> Stack Allocated
 }
-
-
-// In Rust, the variables are immutable by default. This means that once a value is assigned to a variable, it cannot be changed unless the variable is explicitly declared as mutable using the `mut` keyword. In the provided code, the variable `num` is immutable, so its value cannot be altered after its initial assignment.
-
-// Here we declare `num` as mutable using `let mut num:u16 = 23;`, which allows us to change its value later in the code. After declaring it as mutable, we can successfully assign a new value of `500` to `num`. Finally, we print the value of `num`, which will output "The Number is: 500".
-
-// Now this code will give an yellow warning message because the initial value is `23` but it never used. but our program will print new value `500` without any error. this is the true behavior of mutable variables in Rust.
