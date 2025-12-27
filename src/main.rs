@@ -1,17 +1,21 @@
 fn main() {
-    // Tuple
-    let emp_info: (&str, u8) = ("Alice", 30);
-    println!("Employee Name: {}, Age: {}", emp_info.0, emp_info.1);  // Accessing tuple elements by index
+    let num1: u8 = 10;
+    let num2: u8 = 20;
+    let result: u8 = add(num1, num2);
+    println!("The sum of {} and {} is {}", num1, num2, result);
 
-    // we can do destructuring
-    let (name, age) = emp_info;  
-    println!("Employee Name: {}, Age: {}", name, age);
+    hello("Alice"); 
+    age(30);
 }
 
+fn add(a: u8, b: u8) -> u8 {  // It is compulsory to specify the return type by arrow -> 
+    return a + b;
+}
 
-// Notes 📝:
+fn hello(name: &str) {
+    println!("Hello, {}!", name);
+}
 
-// 1. Tuples are fixed-size collections of values of different types.
-// 2. Elements in a tuple can be accessed using dot notation with their index (starting from 0).
-// 3. Tuples can be destructured into individual variables for easier access.
-// 4. Tuples are useful for grouping related values together without creating a custom struct.
+fn age(age: u8) {
+    println!("You are {} years old.", age);
+}
