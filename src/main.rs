@@ -1,34 +1,22 @@
-// fn main() {
-//     let x: u8 = 5;
-//     process_integer(x);
-
-//     println!("The value of x in main() is: {}", x);
-// }
-
-// fn process_integer(x: u8) {
-//     println!("The value of x in process_integer() is: {}", x);
-// }
-
-// This code will compile and run successfully, printing the value of `x` in both the `main` function and the `process_integer` function. because here we deals with stack-allocated data (u8), which implements the `Copy` trait in Rust. When `x` is passed to `process_integer`, a copy of the value is made, leaving the original `x` in `main` unchanged and still accessible after the function call.
-
 fn main() {
-    let x: String = String::from("Hello, Rust!"); // Here, x is the owner 
-    process_string(x); // Now ownership transfered from x to process_integer() function, so x is no longer valid for accessing the string.
+    let s1: String = get_string();  // s1 is the owner of `Hello`
+    println!("This is s1: {}", s1);
 
-    // println!("The value of x in main() is: {}", x); // This line would cause a compile-time error
+    let s2: String = String::from("World!");  // Here, s2 is the owner of `World!` string
+    let s3: String = send_get_string(s2);  // But here, s2's ownership transfered to s3 and s2 is no longer valid
+    println!("This is s3: {}", s3);
+
+    // println!("This is s2: {}", s2); // This would give an error because s3 is the original owner of s2
 }
 
-fn process_string(s: String) {
-    println!("The value of s in process_string() is: {}", s);
+fn get_string() -> String {
+    let new_string = String::from("Hello");  // Owner: new_string
+    return new_string; // Transfer ownership to s1
 }
-// This code will not compile because `String` is a heap-allocated type that does not implement the `Copy` trait. When `x` is passed to `process_string`, ownership of the `String` is moved to the function, and `x` in `main` is no longer valid after the function call. Attempting to access `x` after the move results in a compile-time error.
 
-// If we want to print both in main and in process_string, we can use `.clone()` to create a copy of the `String` before passing it to the function:
-// fn main() {
-//     let x: String = String::from("Hello, Rust!");
-//     process_string(x.clone());
-//     println!("The value of x in main() is: {}", x);
-// }
-// fn process_string(s: String) {
-//     println!("The value of s in process_string() is: {}", s);
-// }
+// recieved_string is the owner of `World!`
+fn send_get_string(recieved_string: String) -> String {
+    return recieved_string;  // Transfer s2's ownership from `recieved_string` to s3
+}
+
+// In s2's case, there are three owners made [s2 -> recieved_string -> s3], but valid or final owner is s3
