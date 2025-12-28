@@ -1,25 +1,25 @@
-const GLOBAL_VALUE: u8 = 100;
-
 fn main() {
-    let outside_variable = 10;
-
-    {
-        let inside_variable = 20;
-        println!("inside_variable = {}", inside_variable);
-        println!("outside_variable = {}", outside_variable);
-
-    } // inside_variable goes out of scope here
-
-    // println!("inside_variable = {}", inside_variable); // This would cause a compile-time error
-
-    println!("outside_variable = {}", outside_variable);
-    print_value();
+    let str1 = String::from("Hello"); // here str1 owns the String
+    let str2 = str1;  // Transfer of ownership from str1 to str2 here, now the original owner str1 is no longer valid
+    // println!("str1: {}", str1); // This would cause a compile-time error
+    println!("str2: {}", str2);  // This is valid because String does not implement the Copy trait
 }
 
-fn print_value() {
-    println!("GLOBAL_VALUE = {}", GLOBAL_VALUE);
-}
+// Important Notes 🗒️ 
 
-// GLOBAL_VALUE is accessible throughout the entire module and in all functions within it.
-// outside_variable is accessible only within main and its inner scopes.
-// inside_variable is accessible only within the inner block where it is defined.
+// let str1 = String::from("Hello");
+// let str2 = str1; // str1 is moved to str2 here
+// println!("str1: {}", str1); // This would cause a compile-time error
+// println!("str2: {}", str2);  // This is valid because String does not implement the Copy trait
+// To fix the above code, you can clone str1:
+// let str1 = String::from("Hello");
+// let str2 = str1.clone(); // Now str1 is cloned to str2
+// println!("str1: {}", str1); // This is now valid
+// println!("str2: {}", str2);  // This is also valid
+
+// -------------------
+
+// let a = 5;
+// let b = a;
+// println!("a: {}", a);
+// println!("b: {}", b);
