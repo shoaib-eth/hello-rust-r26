@@ -1,21 +1,25 @@
+const GLOBAL_VALUE: u8 = 100;
+
 fn main() {
-    let num1: u8 = 10;
-    let num2: u8 = 20;
-    let result: u8 = add(num1, num2);
-    println!("The sum of {} and {} is {}", num1, num2, result);
+    let outside_variable = 10;
 
-    hello("Alice"); 
-    age(30);
+    {
+        let inside_variable = 20;
+        println!("inside_variable = {}", inside_variable);
+        println!("outside_variable = {}", outside_variable);
+
+    } // inside_variable goes out of scope here
+
+    // println!("inside_variable = {}", inside_variable); // This would cause a compile-time error
+
+    println!("outside_variable = {}", outside_variable);
+    print_value();
 }
 
-fn add(a: u8, b: u8) -> u8 {  // It is compulsory to specify the return type by arrow -> 
-    return a + b;
+fn print_value() {
+    println!("GLOBAL_VALUE = {}", GLOBAL_VALUE);
 }
 
-fn hello(name: &str) {
-    println!("Hello, {}!", name);
-}
-
-fn age(age: u8) {
-    println!("You are {} years old.", age);
-}
+// GLOBAL_VALUE is accessible throughout the entire module and in all functions within it.
+// outside_variable is accessible only within main and its inner scopes.
+// inside_variable is accessible only within the inner block where it is defined.
