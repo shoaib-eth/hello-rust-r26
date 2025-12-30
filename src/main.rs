@@ -1,15 +1,14 @@
-fn main() {
-    let mut s1: String = String::from("Hello");
-    let r2 = &s1;
-    println!("r1 = {}", r2);
+// Dangling Reference
 
-    let w1 = &mut s1;
-    w1.push_str("World");
-    println!("w1 = {}", w1);
+fn main() {
+    let reference_to_nothing = create_string_reference();
 }
 
-// This code will successfully executed because it is not implement multiple read and write operations
+fn create_string_reference()->&String {
+    let s: String = String::from("Hello");
+    return &s;
+}
 
-// Summary 🗒️
+// It will give an error because `create_string_reference()` finishesh its block on execution, means it returns nothing while we try to borrow `s` string
 
-// Multiple read and write operations is not allowed in borrow
+// read more on error message
