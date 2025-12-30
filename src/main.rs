@@ -1,14 +1,23 @@
 fn main() {
-    let s1 = String::from("Hello");  
-    let len = calculate_string(&s1); // Here we done borrow option by applying `&` with `s1`, which means we borrow s1's refrence for few time
+    let mut s1 = String::from("Hello");   // Make this mutable by `mut` keyword
+    append_string(&mut s1);    // Applied `&mut`
+    println!("The New String is {} ", s1);
 
-    println!("The length of {} is {}", s1, len);
+    // let len = calculate_string(&mut s1); 
+    // println!("The length of {} is {}", s1, len);
 }
 
-fn calculate_string(s: &String) -> usize {  // `&` also applied here in data type
-    let length = s.len();
-    return length;
+// fn calculate_string(s2: &String) -> usize {
+//     return s2.len();
+// }
+
+fn append_string(s3: &mut String) {  // Applied `&mut` 
+    s3.push_str(" World");
 }
 
 
 // Note 📝
+
+// If we want to change the borrowed string, we have to apply `&mut` keyword.
+
+// Without `&mut` keyword or only with `&` keyword, the string changes in borrow is not possible, gives an error
