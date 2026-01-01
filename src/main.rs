@@ -10,5 +10,5 @@ fn main() {
     println!("User Input: {}", input);
 }
 
-
+// Input/Output Method In Rust
 // This is how we take input from user
