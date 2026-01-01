@@ -1,20 +1,13 @@
-// Shadowing
-
 fn main() {
-    /*
-     * All Variable Names Are Same,
-     * But There Types Are Different
-     */
-    let x = 10;  // Integer Type
-    println!("x = {}", x);
-    
-    let x = "Hello 👋";  // String Type
-    println!("x = {}", x); 
+    let number = 12;
 
-    let x = x.len();  // Integer Type
-    println!("Length of x is {}", x); // it will access the last one `x` value
+    if number % 3 == 0 && number % 4 == 0 {
+        println!("The number is divisible by both 3 and 4.");
+    } else if number % 3 == 0 {
+        println!("The number is divisible by 3 but not by 4.");
+    } else if number % 4 == 0 {
+        println!("The number is divisible by 4 but not by 3.");
+    } else {
+        println!("The number is neither divisible by 3 nor by 4.");
+    }
 }
-
-// Notes 📝
-
-// In Shadowing, variable names could be same, but there data type should be different
