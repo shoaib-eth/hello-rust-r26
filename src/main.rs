@@ -1,14 +1,16 @@
-// Dangling Reference
-
 fn main() {
-    let reference_to_nothing = create_string_reference();
+    // let mut arr1: [u8; 5];  // Array Declaration
+
+    let mut arr1;
+    arr1 = [1, 2, 3, 4, 5];
+
+    println!("arr1[0] = {}", arr1[0]);
+    println!("arr1 = {:?}", arr1);
+
+    arr1[2] = 30;  // Array Index No. 2 value will be changed to 30
+    println!("arr1 = {:?}", arr1); 
+
+    // Array Length
+    println!("Array Length is: {}", arr1.len());
+
 }
-
-fn create_string_reference()->&String {
-    let s: String = String::from("Hello");
-    return &s;
-}
-
-// It will give an error because `create_string_reference()` finishesh its block on execution, means it returns nothing while we try to borrow `s` string
-
-// read more on error message
