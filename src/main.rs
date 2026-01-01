@@ -1,18 +1,19 @@
 fn main() {
-    let num = 2;
+    let num = 11;
 
-    // match num {
-    //     1=>println!("Number is One"),
-    //     2=>println!("Number is Two"),
-    //     5=>println!("Number is Five"),
-    //     _=>println!("Number is Not Recongnizible")
-    // }
+    fn is_even(num: u8) -> bool{
+        // we can do this in most easiest way like this only in one line
+        return num % 2 == 0;
+        // if num % 2 == 0 {
+        //     return true;
+        // } 
+        // return false;
+    }
 
-    // We can do more type of mathematical operations, for e.g.,
+    // `is_even()` function calling in `match` function
     match num {
-        1 | 3=>println!("Number is One"),
-        2 | 4=>println!("Number is Two"),
-        5=>println!("Number is Five"),
-        _=>println!("Number is Not Recongnizible")
+        x if is_even(x) => println!("Even"),
+        x if !is_even(x) => println!("Odd"),
+        _=>println!("Number Is Not Recognizible")
     }
 }
