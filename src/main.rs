@@ -1,17 +1,10 @@
 fn main() {
-    let vrr: Vec<&str> = vec!["Hello", "World", "Rustians"]; // Here, `vrr` is the owner of all the array elements
-    write_vrr(vrr); // ownership transfered
+    let vrr: Vec<&str> = vec!["Hello", "World", "Rustians"]; 
+    write_vrr(&vrr); 
     
-    // println!("vrr = {:?}", vrr);  // Compile time error
+    println!("vrr = {:?}", vrr);  
 }
 
-fn write_vrr(vrr2: Vec<&str>) { // `vrr2` is the current owner of `vrr`
+fn write_vrr(vrr2: &Vec<&str>) { 
     println!("vrr2 = {:?}", vrr2);
 }
-
-// Important Notes 📝
-
-// 1. Ownership is exist in vector
-
-/* Onwnership Tranfer */
-// vrr  - >  Ownership Transfered through write_vrr()  ->  vrr2
