@@ -1,10 +1,20 @@
+// Shadowing
+
 fn main() {
-    let vrr: Vec<&str> = vec!["Hello", "World", "Rustians"]; 
-    write_vrr(&vrr); 
+    /*
+     * All Variable Names Are Same,
+     * But There Types Are Different
+     */
+    let x = 10;  // Integer Type
+    println!("x = {}", x);
     
-    println!("vrr = {:?}", vrr);  
+    let x = "Hello 👋";  // String Type
+    println!("x = {}", x); 
+
+    let x = x.len();  // Integer Type
+    println!("Length of x is {}", x); // it will access the last one `x` value
 }
 
-fn write_vrr(vrr2: &Vec<&str>) { 
-    println!("vrr2 = {:?}", vrr2);
-}
+// Notes 📝
+
+// In Shadowing, variable names could be same, but there data type should be different
