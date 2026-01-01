@@ -1,9 +1,18 @@
 fn main() {
-    let arr = [1, 2, 3, 4, 5];
+    let num = 2;
 
-    for element in &arr {
-        println!("{}", element);
+    // match num {
+    //     1=>println!("Number is One"),
+    //     2=>println!("Number is Two"),
+    //     5=>println!("Number is Five"),
+    //     _=>println!("Number is Not Recongnizible")
+    // }
+
+    // We can do more type of mathematical operations, for e.g.,
+    match num {
+        1 | 3=>println!("Number is One"),
+        2 | 4=>println!("Number is Two"),
+        5=>println!("Number is Five"),
+        _=>println!("Number is Not Recongnizible")
     }
 }
-
-// `for loop` has different syntax in rust, look at them in `main()` function
