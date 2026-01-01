@@ -1,16 +1,18 @@
 fn main() {
-    // let mut arr1: [u8; 5];  // Array Declaration
-
-    let mut arr1;
-    arr1 = [1, 2, 3, 4, 5];
-
-    println!("arr1[0] = {}", arr1[0]);
-    println!("arr1 = {:?}", arr1);
-
-    arr1[2] = 30;  // Array Index No. 2 value will be changed to 30
-    println!("arr1 = {:?}", arr1); 
-
-    // Array Length
-    println!("Array Length is: {}", arr1.len());
-
+    let arr: [&str; 3] = ["Hello", "World", "Coders"];
+    write_arr(arr); // Array directly passed
+    println!("arr = {:?}", arr);
 }
+
+fn write_arr(mut arr1: [&str; 3]) { // arr1 new copy of arr
+    arr1[0] = "Hey 👋";
+    println!("arr1 = {:?}", arr1);
+}
+
+// Output:
+
+// arr1 = ["Hey 👋", "World", "Coders"]
+// arr = ["Hello", "World", "Coders"]
+
+// There is no ownership concept because array is fixed type
+// But this could be very expensive for memory because it copies entire array, and array could be very long.
