@@ -1,14 +1,47 @@
+use rand::prelude::*;
+use rand::rng;
 use std::io;
 
 fn main() {
-    let mut input = String::new();
-    println!("please Enter Your Input: ");
-    io::stdin()
-       .read_line(&mut input)
-       .expect("Failed To Read Input");
+    let guess_list = ["bannana", "apple", "mango", "orange", "grapes"];
+    loop {
+        let mut rng = rng();
+        let index = rng.random_range(0..guess_list.len());
+        let random_fruit = guess_list[index];
 
-    println!("User Input: {}", input);
+        println!("Random Fruit:{}", random_fruit);
+        println!("Please enter your guess fruit:");
+
+        let mut input = String::new();
+        let mut fruit_name = String::new();
+
+        match io::stdin().read_line(&mut input) {
+            Ok(_) => {
+                fruit_name = input.trim().to_lowercase().to_string(); //input.trim() returns &str
+                println!("Selected Fruit: {}", fruit_name);
+
+                if !guess_list.contains(&fruit_name.as_str()) {
+                    println!("Invalid fruit! Please enter a valid fruit");
+                    continue;
+                }
+            }
+            Err(error) => {
+                eprintln!("Error:{}", error);
+            }
+        }
+
+        match guses_fruit(&fruit_name, &random_fruit) {
+            true => {
+                println!("Correct Guess! You are a winner! 🏆");
+                break;
+            }
+            false => {
+                println!("Retry");
+            }
+        }
+    }
 }
 
-// Input/Output Method In Rust
-// This is how we take input from user
+fn guses_fruit(guess: &str, actual: &str) -> bool {
+    guess == actual
+}
