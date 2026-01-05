@@ -1,26 +1,32 @@
-#[derive(Debug)]
-
-struct Student {
-    name: String,
-    age: u8,
-    result: bool,
+struct Rectangle {
+    length: u16,
+    breadth: u16,
 }
+
+fn area_rec(rec: Rectangle) -> u16 {
+    return rec.length * rec.breadth;
+}
+
 fn main() {
-    let student_details: Student = Student {
-        name: "Alice".to_owned(),
-        age: 21,
-        result: true,
+    let rec_one: Rectangle = Rectangle {
+        length: 10,
+        breadth: 5,
     };
 
-    println!("Student = {:?}", student_details);
+    let rec_two: Rectangle = Rectangle {
+        length: 20,
+        breadth: 15,
+    };
 
-    // print all the values manually
-    println!(
-        "Student Name = {}, Student Age = {}, Student Result = {}",
-        student_details.name, student_details.age, student_details.result
-    );
+    // rec_one -> rec -> result_one
+    let result_one: u16 = area_rec(rec_one); // Transfer of ownership of `rec_one` to `rec` in `area_rec()` parameter 
+    println!("Result One: {}", result_one);
+
+    // rec_two -> rec -> result_two
+    let result_two: u16 = area_rec(rec_two); // Transfer of ownership of `rec_two` to `rec` in `area_rec()` parameter 
+    println!("Result Two: {}", result_two);
 }
 
 // Notes 📝
 
-// If we want to print struct values, we have to use `#[derive(Debug)]`
+// Ownership in struct works like ownership in `String`
