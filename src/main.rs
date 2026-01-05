@@ -1,9 +1,12 @@
+#[derive(Debug)]
+
 struct Rectangle {
     length: u16,
     breadth: u16,
 }
 
-fn area_rec(rec: Rectangle) -> u16 {
+fn area_rec(rec: &Rectangle) -> u16 {
+    // value is borrowed
     return rec.length * rec.breadth;
 }
 
@@ -18,15 +21,11 @@ fn main() {
         breadth: 15,
     };
 
-    // rec_one -> rec -> result_one
-    let result_one: u16 = area_rec(rec_one); // Transfer of ownership of `rec_one` to `rec` in `area_rec()` parameter 
+    println!("rec_one = {:?}", rec_one);
+    let result_one: u16 = area_rec(&rec_one); // value is borrowed
     println!("Result One: {}", result_one);
 
-    // rec_two -> rec -> result_two
-    let result_two: u16 = area_rec(rec_two); // Transfer of ownership of `rec_two` to `rec` in `area_rec()` parameter 
+    println!("rec_two = {:?}", rec_two);
+    let result_two: u16 = area_rec(&rec_two); // value is borrowed
     println!("Result Two: {}", result_two);
 }
-
-// Notes 📝
-
-// Ownership in struct works like ownership in `String`
