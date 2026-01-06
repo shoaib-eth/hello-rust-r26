@@ -1,44 +1,28 @@
-#[derive(Debug)]
-
-// we can define data types in enums variants
-enum Shape {
-    Circle(f64),
-    Rectangle(f64, f64),
-}
-
-const PI: f64 = 3.14;
-
-// `impl` is `Shape` type which is enum,
-// it denotes the `Shape` enum
-impl Shape {
-    // Associative Functions
-    fn new_circle(radius: f64) -> Self {
-        Self::Circle(radius)
-    }
-
-    fn new_rectangle(length: f64, breadth: f64) -> Self {
-        Self::Rectangle(length, breadth)
-    }
-
-    // we dont have to create two seperate method functions for calculate `circle` and `rectangle`, we can do these both task in only `match()` function, when circle is called, the area of circle will be calculated and vice versa.
-    // Method
-    fn calculate(&self) {
-        match self {
-            Shape::Circle(radius) => println!("Area Of Circle: {}", PI * radius * radius),
-            Shape::Rectangle(length, breadth) => {
-                println!("Area Of Rectangle: {}", length * breadth)
-            }
-        }
-    }
-}
-
 fn main() {
-    let circle = Shape::new_circle(5.0);
-    println!("Circle: {:?}", circle);
+    let user_id_1 = 1;
+    let user_id_2 = 2;
 
-    let rectangle = Shape::new_rectangle(5.0, 2.5);
-    println!("Rectangle: {:?}", rectangle);
+    // let value_1 = get_user_phone_number(user_id_1);
+    // println!("value_1: {:?}", value_1);  // value_1: Some(89847)
 
-    circle.calculate();
-    rectangle.calculate();
+    // let value_2 = get_user_phone_number(user_id_2);
+    // println!("value_2: {:?}", value_2); // value_2: None
+
+    // This is best approcah because it prints the value in number format for eg. mobile number `98083`, not print Some(89847)
+    match get_user_phone_number(user_id_1) {
+        Some(data) => println!("Date: {}", data),
+        None => println!("User Mobile Number Does Not Exists!"),
+    }
 }
+
+fn get_user_phone_number(user_id: i32) -> Option<i32> {
+    // it is generic type, means in option< > we can define many data types
+    let mob_num = 89847;
+    if user_id == 1 {
+        return Some(mob_num);
+    } else {
+        return None;
+    }
+}
+
+// Note - https://dev.to/fadygrab/learning-rust-14-option-enum-an-enum-and-pattern-matching-use-case-1dgf
