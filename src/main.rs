@@ -1,19 +1,22 @@
-use std::fmt::Display;
+#[derive(Debug)]
 
-// This syntax will help to print all data type values
-// This is Generic Type
-// Here we use <T: Displat>, T, this will help to read all the data types and printing it all.
-fn print_data<T: Display>(data: T) -> T {
-    // println!("Data: {}", data);
-    data
+struct Circle {
+    radius: f64,
+}
+
+const PI: f64 = 3.14;
+
+trait Shape {
+    fn area_of_circle(&self) -> f64;
+}
+
+impl Shape for Circle {
+    fn area_of_circle(&self) -> f64 {
+        return PI * self.radius * self.radius;
+    }
 }
 
 fn main() {
-    let x = 5;
-    let y = true;
-    let z = "Hello".to_owned();
-
-    println!("Data: {}", print_data(x));
-    println!("Data: {}", print_data(y));
-    println!("Data: {}", print_data(z));
+    let circle: Circle = Circle { radius: 5.0 };
+    println!("Area of circle: {:?}", circle.area_of_circle());
 }
