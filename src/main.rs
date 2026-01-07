@@ -1,62 +1,28 @@
-trait Course {
-    fn get_overview(&self) -> String;
-}
-
-struct Workshop {
-    title: String,
-    instructore: String,
-    duration: String,
-}
-
-struct Seminar {
-    title: String,
-    speaker: String,
-    location: String,
-}
-
-// Here we used `format!()`, it returns the string
-impl Course for Workshop {
-    fn get_overview(&self) -> String {
-        format!(
-            "Workshop Title: {}, Workshop Instructor: {}, Workshop Duration: {}",
-            self.title, self.instructore, self.duration
-        )
+trait Greet {
+    fn greet(&self) {
+        println!("Hello 👋 From Rust Developers ✌️");
     }
 }
 
-impl Course for Seminar {
-    fn get_overview(&self) -> String {
-        format!(
-            "Seminar Title: {}, Seminar Speaker: {}, Seminar Location: {}",
-            self.title, self.speaker, self.location
-        )
-    }
-}
+struct Person;
+struct Student;
 
-fn print_course_overview<T: Course>(param: T) {
-    println!("{}", param.get_overview());
+impl Greet for Person {}
+
+impl Greet for Student {
+    fn greet(&self) {
+        println!("Hello 👋 From Students ✌️");
+    }
 }
 
 fn main() {
-    let workshop: Workshop = Workshop {
-        title: "Blockchain".to_owned(),
-        instructore: "Alice".to_owned(),
-        duration: "4 Hours".to_owned(),
-    };
+    let p: Person = Person;
+    p.greet();
 
-    let seminar: Seminar = Seminar {
-        title: "Bitcoin: The Digital Gold".to_owned(),
-        speaker: "Shoaib".to_owned(),
-        location: "Delhi, India".to_owned(),
-    };
-
-    // call the functions
-    // workshop.get_overview();
-    // seminar.get_overview();
-
-    // println!("Workshop Details -> {}", workshop.get_overview());
-    // println!("Seminar Details -> {}", seminar.get_overview());
-
-    print_course_overview(workshop);
-    print_course_overview(seminar);
+    let s: Student = Student;
+    s.greet();
 }
+
+// We can implement functions in `trait` also``
+
+// We can do the override the function of trait, for eg. we copy the `greet()` function from `trait` function pasted it into Student `impl` and changed the message
