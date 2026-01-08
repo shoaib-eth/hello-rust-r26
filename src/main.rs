@@ -1,29 +1,28 @@
 fn main() {
-    let vec: Vec<i32> = vec![1, 2, 3];
+    let arr = [1, 2, 3];
 
-    for item in vec.iter() {
-        // Vector ownership is not transfered, it takes refrence of elements only
+    for item in &arr {
+        // Here `arr` is `iter()` type
         println!("{}", item);
     }
+    println!("{:?}", arr);
 
-    println!("{:?}", vec); // This will run successfully
-
-    for item in vec.into_iter() {
-        // Vector ownership is transfered
+    for item in arr {
+        // Here `arr` is `into_iter()` type
         println!("{}", item);
     }
-
-    // println!("{:?}", vec); // This will give an compile time error, because `vec` ownership has transfered to `into_itr()`, so `vec` is no longer owner
+    println!("{:?}", arr);
 }
 
 // Notes 📝
 
-// Iterators works behind the scene, means when we doesn't specify type in for loop with `vec`, it automatially assign `vec` with `into_iter()`, this is the default behaviour
-// In `for` loop instead of only `vec` we can write it `&vec`, so it takes the reference of the elements not the ownership
+// Here we printed the both `println!()` statements.
 
-// So when we write `for items in vec`, it autometically converts into `vec.into_iter()` behind the scene which takes ownership of all the elements
-// to remove the ownership, we have to specify `&vec` or `vec.iter()`
+// because array is a fixed type and fixed types elements always stores in stack and give us a copy trait
+// that's why our seconds `println!()` statements runs successfully and doesn't gave an error
+// here ownership works but doesn't impact the code running
 
-// Adding `into_iter()` in for loops variable is its default behaviour of rust.
+// if try this in `vector` case, so our second `println!()` statement will give an error, why? because vector is dynamic type and its elements stored in heap memory, so here ownership works stricktly.
 
-// Tip - when we specify var in `for` loop, rust automatically sets the data type with elements, see that data type
+// Fixed Type -> Give Copy Trait
+// Dynamic Type -> Don't Give Copy Trait, Ownership Works Stricktly.
