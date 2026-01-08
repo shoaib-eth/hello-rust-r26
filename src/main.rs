@@ -1,28 +1,17 @@
-trait Greet {
-    fn greet(&self) {
-        println!("Hello 👋 From Rust Developers ✌️");
-    }
-}
-
-struct Person;
-struct Student;
-
-impl Greet for Person {}
-
-impl Greet for Student {
-    fn greet(&self) {
-        println!("Hello 👋 From Students ✌️");
-    }
-}
-
 fn main() {
-    let p: Person = Person;
-    p.greet();
+    let a = [1, 2, 3];
 
-    let s: Student = Student;
-    s.greet();
+    let mut iter = a.into_iter(); // `into_iter() iterates directly over the elements and get the elements ownership dirctly to the iterator`
+
+    // A call to next() returns the next value.....
+    assert_eq!(Some(1), iter.next());
+    assert_eq!(Some(2), iter.next());
+    assert_eq!(Some(3), iter.next());
+
+    // ... and then None once it's over
+    assert_eq!(None, iter.next());
+
+    // More calls may or may not returns `None`. Here, they always will.
+    assert_eq!(None, iter.next());
+    assert_eq!(None, iter.next());
 }
-
-// We can implement functions in `trait` also``
-
-// We can do the override the function of trait, for eg. we copy the `greet()` function from `trait` function pasted it into Student `impl` and changed the message
