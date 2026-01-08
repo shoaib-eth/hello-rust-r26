@@ -1,24 +1,29 @@
 fn main() {
-    let a = [1, 2, 3];
+    let vec: Vec<i32> = vec![1, 2, 3];
 
-    let mut iter = a.iter(); // `iter()` does not owns the wonership of all elements, it get the reference of those elements, it does not returns the elements value while it returns the reference of those elements
+    for item in vec.iter() {
+        // Vector ownership is not transfered, it takes refrence of elements only
+        println!("{}", item);
+    }
 
-    // A call to next() returns the next value.....
-    assert_eq!(Some(&1), iter.next());
-    assert_eq!(Some(&2), iter.next());
-    assert_eq!(Some(&3), iter.next());
+    println!("{:?}", vec); // This will run successfully
 
-    // ... and then None once it's over
-    assert_eq!(None, iter.next());
+    for item in vec.into_iter() {
+        // Vector ownership is transfered
+        println!("{}", item);
+    }
 
-    // More calls may or may not returns `None`. Here, they always will.
-    assert_eq!(None, iter.next());
-    assert_eq!(None, iter.next());
+    // println!("{:?}", vec); // This will give an compile time error, because `vec` ownership has transfered to `into_itr()`, so `vec` is no longer owner
 }
 
-// Note 📝
+// Notes 📝
 
-// Difference Between `into_iter()` and `iter()`
+// Iterators works behind the scene, means when we doesn't specify type in for loop with `vec`, it automatially assign `vec` with `into_iter()`, this is the default behaviour
+// In `for` loop instead of only `vec` we can write it `&vec`, so it takes the reference of the elements not the ownership
 
-// `into_iter()` -> It get the ownership of elements directly and returns the elements value
-// `iter()` -> It get the reference of those elemens and returns the elements reference
+// So when we write `for items in vec`, it autometically converts into `vec.into_iter()` behind the scene which takes ownership of all the elements
+// to remove the ownership, we have to specify `&vec` or `vec.iter()`
+
+// Adding `into_iter()` in for loops variable is its default behaviour of rust.
+
+// Tip - when we specify var in `for` loop, rust automatically sets the data type with elements, see that data type
