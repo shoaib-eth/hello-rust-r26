@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Markdown To HTML Output</title>
+  </head>
+  <body>
+    <h1>
+      🦀 Rust Programming Language – Introduction, History, Use Cases &amp;
+      Blockchain
+    </h1>
+    <h2>What is Rust?</h2>
+    <p>Rust is a <strong>systems programming language</strong> focused on:</p>
+    <ul>
+      <li>Memory safety</li>
+      <li>High performance</li>
+      <li>Concurrency without data races</li>
+    </ul>
+    <p>
+      Rust achieves safety <strong>without using a garbage collector</strong>.
+      Instead, it uses a unique system called
+      <strong>Ownership and Borrowing</strong>.
+    </p>
+    <p>In simple words:</p>
+    <blockquote>
+      <p>
+        Rust gives you <strong>C/C++ level performance</strong> with
+        <strong>much stronger safety guarantees</strong>.
+      </p>
+    </blockquote>
+    <hr />
+    <h2>Why Rust Was Created</h2>
+    <p>
+      Rust was created to solve long-standing problems in systems programming:
+    </p>
+    <ul>
+      <li>Segmentation faults</li>
+      <li>Memory leaks</li>
+      <li>Null pointer dereferencing</li>
+      <li>Data races in concurrent programs</li>
+    </ul>
+    <p>Most languages solve these using:</p>
+    <ul>
+      <li>Garbage collection (Java, Go)</li>
+      <li>Manual memory management (C, C++)</li>
+    </ul>
+    <p>Rust solves them at <strong>compile time</strong>.</p>
+    <hr />
+    <h2>History of Rust</h2>
+    <ul>
+      <li>
+        Rust started in <strong>2006</strong> as a personal project by
+        <strong>Graydon Hoare</strong>
+      </li>
+      <li>Sponsored later by <strong>Mozilla</strong></li>
+      <li>First stable release: <strong>Rust 1.0 (2015)</strong></li>
+    </ul>
+    <p>Mozilla used Rust to:</p>
+    <ul>
+      <li>Build parts of the Firefox browser</li>
+      <li>Replace unsafe C++ code</li>
+    </ul>
+    <p>Today, Rust is maintained by the <strong>Rust Foundation</strong>.</p>
+    <hr />
+    <h2>Core Design Goals of Rust</h2>
+    <p>Rust was designed with these goals:</p>
+    <ol>
+      <li>
+        <strong>Memory Safety</strong> – No use-after-free, no null pointers
+      </li>
+      <li><strong>Performance</strong> – Comparable to C and C++</li>
+      <li><strong>Concurrency</strong> – Fearless concurrency</li>
+      <li><strong>Reliability</strong> – Errors caught at compile time</li>
+    </ol>
+    <hr />
+    <h2>Key Features of Rust</h2>
+    <h3>1. Ownership System</h3>
+    <p>Rust tracks:</p>
+    <ul>
+      <li>Who owns the data</li>
+      <li>Who can borrow it</li>
+      <li>For how long</li>
+    </ul>
+    <p>This prevents:</p>
+    <ul>
+      <li>Dangling pointers</li>
+      <li>Double frees</li>
+      <li>Data races</li>
+    </ul>
+    <hr />
+    <h3>2. Borrow Checker</h3>
+    <p>The borrow checker enforces rules like:</p>
+    <ul>
+      <li>Only one mutable reference OR multiple immutable references</li>
+      <li>References must always be valid</li>
+    </ul>
+    <p>Violations are caught <strong>before the program runs</strong>.</p>
+    <hr />
+    <h3>3. Zero-Cost Abstractions</h3>
+    <p>Rust abstractions:</p>
+    <ul>
+      <li>Have no runtime overhead</li>
+      <li>Compile down to efficient machine code</li>
+    </ul>
+    <p>Example:</p>
+    <pre><code class="language-rust">fn add(a: i32, b: i32) -&gt; i32 {
+    a + b
+}
+</code></pre>
+    <p>This compiles to code similar to C.</p>
+    <hr />
+    <h3>4. Pattern Matching</h3>
+    <p>Rust provides powerful pattern matching using <code>match</code>.</p>
+    <p>Example:</p>
+    <pre><code class="language-rust">let x = Some(5);
+
+match x {
+    Some(v) =&gt; println!("Value: {}", v),
+    None =&gt; println!("No value"),
+}
+</code></pre>
+    <hr />
+    <h2>Common Use Cases of Rust</h2>
+    <p>Rust is used where <strong>performance + safety</strong> both matter.</p>
+    <hr />
+    <h2>1. Systems Programming</h2>
+    <p>Examples:</p>
+    <ul>
+      <li>Operating systems</li>
+      <li>Device drivers</li>
+      <li>Embedded systems</li>
+    </ul>
+    <p>Why Rust?</p>
+    <ul>
+      <li>No garbage collector</li>
+      <li>Fine-grained control over memory</li>
+    </ul>
+    <hr />
+    <h2>2. Backend &amp; Web Services</h2>
+    <p>Rust is used to build:</p>
+    <ul>
+      <li>High-performance APIs</li>
+      <li>Microservices</li>
+    </ul>
+    <p>Frameworks:</p>
+    <ul>
+      <li>Actix Web</li>
+      <li>Axum</li>
+      <li>Rocket</li>
+    </ul>
+    <p>Rust servers are:</p>
+    <ul>
+      <li>Fast</li>
+      <li>Memory efficient</li>
+      <li>Highly concurrent</li>
+    </ul>
+    <hr />
+    <h2>3. CLI Tools</h2>
+    <p>Many popular CLI tools are written in Rust:</p>
+    <ul>
+      <li>ripgrep</li>
+      <li>fd</li>
+      <li>bat</li>
+    </ul>
+    <p>Why Rust?</p>
+    <ul>
+      <li>Fast startup time</li>
+      <li>Safe argument handling</li>
+    </ul>
+    <hr />
+    <h2>4. Game Engines &amp; Graphics</h2>
+    <p>Rust is used in:</p>
+    <ul>
+      <li>Game engines</li>
+      <li>Rendering pipelines</li>
+    </ul>
+    <p>Why?</p>
+    <ul>
+      <li>Performance close to C++</li>
+      <li>Better safety guarantees</li>
+    </ul>
+    <hr />
+    <h2>Rust in Blockchain</h2>
+    <p>
+      Rust is
+      <strong>one of the most important languages in blockchain today</strong>.
+    </p>
+    <hr />
+    <h2>Why Rust is Perfect for Blockchain</h2>
+    <p>Blockchain software requires:</p>
+    <ul>
+      <li>High performance</li>
+      <li>Deterministic execution</li>
+      <li>Memory safety</li>
+      <li>Concurrency</li>
+    </ul>
+    <p>Rust provides all of these.</p>
+    <hr />
+    <h2>Major Blockchain Projects Using Rust</h2>
+    <h3>1. Solana</h3>
+    <ul>
+      <li>Validator client written in Rust</li>
+      <li>Smart contracts written in Rust</li>
+    </ul>
+    <hr />
+    <h3>2. Polkadot</h3>
+    <ul>
+      <li>Core runtime built in Rust</li>
+      <li>Uses Substrate framework</li>
+    </ul>
+    <hr />
+    <h3>3. Near Protocol</h3>
+    <ul>
+      <li>Smart contracts written in Rust</li>
+      <li>Focus on safety and performance</li>
+    </ul>
+    <hr />
+    <h3>4. Cosmos</h3>
+    <ul>
+      <li>Tendermint and Cosmos SDK components use Rust</li>
+    </ul>
+    <hr />
+    <h2>Rust Smart Contracts</h2>
+    <p>Unlike Solidity:</p>
+    <ul>
+      <li>Rust contracts compile to <strong>WASM</strong></li>
+      <li>Strong type safety</li>
+      <li>Fewer runtime surprises</li>
+    </ul>
+    <p>Example (simplified):</p>
+    <pre><code class="language-rust">pub fn add(a: i32, b: i32) -&gt; i32 {
+    a + b
+}
+</code></pre>
+    <p>This can be compiled to WASM for blockchain execution.</p>
+    <hr />
+    <h2>Rust vs Solidity (Blockchain Perspective)</h2>
+    <p>
+      | Feature | Rust | Solidity | |------|------|----------| | Memory safety |
+      Compile-time | Runtime | Type system | Very strong | Moderate | Target |
+      WASM | EVM | Performance | Very high | Gas-limited
+    </p>
+    <hr />
+    <h2>Learning Curve</h2>
+    <p>Rust is known for:</p>
+    <ul>
+      <li>Steep learning curve initially</li>
+      <li>Very strong fundamentals</li>
+    </ul>
+    <p>But once learned:</p>
+    <ul>
+      <li>Code is more reliable</li>
+      <li>Fewer production bugs</li>
+    </ul>
+    <hr />
+    <h2>Rust Philosophy</h2>
+    <p>Rust follows the principle:</p>
+    <blockquote>
+      <p>"If it compiles, it probably works."</p>
+    </blockquote>
+    <p>The compiler acts as a <strong>strict teacher</strong>.</p>
+    <hr />
+    <h2>Extra Material</h2>
+    <p>Things Rust is especially good at:</p>
+    <ul>
+      <li>Writing secure software</li>
+      <li>Replacing unsafe C/C++ code</li>
+      <li>Large-scale systems</li>
+    </ul>
+    <p>Rust is used by:</p>
+    <ul>
+      <li>Google</li>
+      <li>Amazon</li>
+      <li>Microsoft</li>
+      <li>Meta</li>
+    </ul>
+    <hr />
+    <h2>Summary</h2>
+    <ul>
+      <li>Rust is a safe, fast systems programming language</li>
+      <li>Focuses on memory safety without GC</li>
+      <li>Widely used in backend, CLI, and blockchain</li>
+      <li>One of the top languages for Web3 infrastructure</li>
+    </ul>
+    <hr />
+    <h2>Interview Tip</h2>
+    <p>
+      "Rust combines low-level performance with compile-time safety, making it
+      ideal for systems and blockchain development."
+    </p>
+    <hr />
+    <p><strong>End of Notes</strong></p>
+  </body>
+</html>
