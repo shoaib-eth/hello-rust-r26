@@ -1,3 +1,3 @@
 fn main() {
-    // Read Notes on `packages_and_crates.md`
+    // Read Notes on `modules_and_use.md`
 }
