@@ -1,3 +1,3 @@
 fn main() {
-    // Read Notes on `lifetime_in_rust.md`
+    // Read Notes on `lifetime_vs_scope.md`
 }
