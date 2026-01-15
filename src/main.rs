@@ -1,3 +1,3 @@
 fn main() {
-    // Read Notes on `smart_pointers.md`
+    // Read Notes on `Lifetime.md`
 }
