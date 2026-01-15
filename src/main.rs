@@ -1,3 +1,13 @@
+// This code will give an compile time error, read its `notes.md` file
+
 fn main() {
-    // Read Notes on `lifetime_vs_scope.md`
+    let x = 10;
+    let y = get_value();
+
+    println!("x + y = {}", x + y);
+}
+
+fn get_value() -> &i32 {
+    let y = 5;
+    &y
 }
